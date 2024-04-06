@@ -7,7 +7,7 @@ const Navbar = (props) => {
 
   return (
     <div className='bg-black bg-opacity text-white w-full'>
-           <div className='flex justify-between items-center w-full max-w-[1160px] py-4 mx-auto px-6'> {/* Added px-6 for left and right padding */}
+           <div className='flex justify-between items-center w-full max-w-[1160px] py-4 mx-auto px-6'>
                 <nav>
                     <ul className='text-white flex gap-x-12'>
                         <li>
@@ -17,21 +17,17 @@ const Navbar = (props) => {
                 </nav>
 
                 <div className='flex items-center gap-x-4'>
-                    { !isLoggedIn &&
+                    { isLoggedIn &&
                         <>
                             <Link to="/login">
                                 <button className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-700'>
                                     Log Out
                                 </button>
                             </Link>
-                            <Link to="/signup">
-                                <button className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-700'>
-                                    Dashboard
-                                </button>
-                            </Link>
+
                         </>
                     }
-                    { isLoggedIn &&
+                    { !isLoggedIn &&
                         <>
                             <Link to="/">
                                 <button onClick={() => setIsLoggedIn(false)} className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded border border-gray-700'>
