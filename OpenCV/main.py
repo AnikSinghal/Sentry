@@ -27,7 +27,8 @@ while True:
     img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 
     faceCurr=face_recognition.face_locations(imgS)
-    encodeCurr=face_recognition.encodings(imgS,faceCurr)
+    encodeCurr = face_recognition.face_encodings(imgS, faceCurr)
+
 
     for encodeface, faceLoc in zip(encodeCurr,faceCurr):
         matches=face_recognition.compare_faces(encodeListKnown,encodeface)
@@ -36,7 +37,9 @@ while True:
         print('faceDis : ' , faceDis)
 
         matchIndex= np.argmin(faceDis)
-        print('Roll No. : ',memberIds[matchIndex]) #memberIds(matchIndex) gives the roll no. or the file name.
+        if(matches[matchIndex]):
+            print('Roll No. : ',memberIds[matchIndex])
+            # cv2.rectangle() #memberIds(matchIndex) gives the roll no. or the file name.
     if success:
         cv2.imshow("Webcam (Press 'ESC' to exit)",imgB)
     key=cv2.waitKey(27)

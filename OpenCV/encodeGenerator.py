@@ -3,7 +3,7 @@ import face_recognition
 import os
 import pickle
 
-folderPath='members'
+folderPath='member'
 pathList=os.listdir(folderPath)
 imgList=[]
 memberIds=[]
@@ -29,6 +29,6 @@ encodeListKnownIds=(encodeListKnown,memberIds)
 print(encodeListKnown)
 print("encoding done")
 
-file = open('EncodingFile.p','wb')
+file = open('./EncodingFile.p','wb')
 pickle.dump(encodeListKnownIds,file )
 file.close()
